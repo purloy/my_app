@@ -38,6 +38,16 @@
 
      
       </div>
+      <% if user_signed_in? %>
+
+  <% if @book.user_id == current_user.id %>
+
+  <%= link_to 'Edit', edit_book_path(@book), class: "btn btn-primary" %> 
+  <%= link_to 'Delete', book_path(@book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"  %>
+  
+  <% end %>
+
+<% end %>
     </div>
 
 </div>
@@ -45,30 +55,23 @@
 <div class = "row">
   
   <div class = "col-xs-4 col-sm-4">
-    <div class = "well">
-    <%= render @book.reviews %>
-    </div>
-    <div>
-      <% if user_signed_in? %>
-        <%= link_to 'Add Review', new_book_review_path(@book)%>
-      <% end %>
 
+
+  </div>
+  <div class = "col-xs-4 col-sm-8">
+    <div class = "well">
+      <h1> Reviews</h1><br>
+      <%= render @book.reviews %>
+        <% if user_signed_in? %>
+          <%= link_to 'Add Review', new_book_review_path(@book), class: "btn btn-info"%>
+        <% end %>
     </div>
 
   </div>
 
 </div>
 
-<% if user_signed_in? %>
 
-	<% if @book.user_id == current_user.id %>
-
-	<%= link_to 'Edit', edit_book_path(@book) %> 
-	<%= link_to 'Delete', book_path(@book), method: :delete, data: { confirm: "Are you sure?" }  %>
-	
-	<% end %>
-
-<% end %>
 
 <script>
     $('.review-rating').raty({
