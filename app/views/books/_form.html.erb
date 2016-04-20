@@ -1,4 +1,6 @@
-<%= tinymce %>
+
+<%= tinymce_assets %>
+
 <%= simple_form_for @book, :html => { :multipart => true } do |f| %>
   <% if @book.errors.any? %>
     <div id="error_explanation">
@@ -24,7 +26,7 @@
     <%= select_tag(:category_id, options_for_select(@categories), :prompt => "Select a Category") %><br>
 
     <%= f.label :description %><br>
-    <%= text_area_tag :description, "",:class => "tinymce", :rows => 40, :cols => 120 %><br>
+    <%= f.text_area :description, :class => "tinymce", :rows => 40, :cols => 120 %><br>
 
     <%= f.label :author %><br>
     <%= f.text_field :author %><br>
