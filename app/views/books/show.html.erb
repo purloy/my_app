@@ -1,0 +1,95 @@
+<p id="notice"><%= notice %></p>
+
+<div class = "row">
+
+  
+    <div class = "col-md-4">
+
+      <div class = "well">
+        <div class = "book-show">
+          <%= image_tag @book.book_img.url(:book_show) %>
+        </div>
+      </div>
+
+    </div>
+  
+    <div class = "col-md-8">
+      <div class = "well">
+      <p>
+        <strong>Title:</strong>
+        <%= @book.title %>
+      </p>
+       <p>
+        <strong>Author:</strong>
+        <%= @book.author %>
+      </p>
+
+      <p>
+        <strong>Average:</strong>
+        <div class = "average-review-rating" data-score=<%= @average_review %>></div>
+        <span> Based on <%= @book.reviews.count %> reviews</span>
+      </p>
+
+      <p>
+        <strong>Description:</strong>
+        <%= @book.description %>
+      </p>
+
+     
+      </div>
+    </div>
+
+</div>
+
+<div class = "row">
+  
+  <div class = "col-md-4">
+    <div class = "well">
+    <%= render @book.reviews %>
+    </div>
+    <div>
+      <% if user_signed_in? %>
+        <%= link_to 'Add Review', new_book_review_path(@book)%>
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>
+
+<% if user_signed_in? %>
+
+	<% if @book.user_id == current_user.id %>
+
+	<%= link_to 'Edit', edit_book_path(@book) %> 
+	<%= link_to 'Delete', book_path(@book), method: :delete, data: { confirm: "Are you sure?" }  %>
+	
+	<% end %>
+
+<% end %>
+
+<script>
+    $('.review-rating').raty({
+      readOnly: true,
+      score: function(){
+        return $(this).attr('data-score');
+
+      },
+      path: '/assets/'
+    });
+
+</script>
+
+<script>
+    $('.average-review-rating').raty({
+      readOnly: true,
+      score: function(){
+        return $(this).attr('data-score');
+
+      },
+      path: '/assets/'
+    });
+
+</script>
+	
