@@ -35,19 +35,20 @@
         <strong>Description:</strong>
         <%= @book.description.html_safe %>
       </p>
+        <% if user_signed_in? %>
 
+          <% if @book.user_id == current_user.id %>
+
+          <%= link_to 'Edit', edit_book_path(@book), class: "btn btn-primary" %> 
+          <%= link_to 'Delete', book_path(@book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"  %>
+          
+          <% end %>
+
+      <% end %>
+      
      
       </div>
-      <% if user_signed_in? %>
 
-  <% if @book.user_id == current_user.id %>
-
-  <%= link_to 'Edit', edit_book_path(@book), class: "btn btn-primary" %> 
-  <%= link_to 'Delete', book_path(@book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"  %>
-  
-  <% end %>
-
-<% end %>
     </div>
 
 </div>
