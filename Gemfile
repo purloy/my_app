@@ -18,7 +18,6 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'simple_form'
 gem 'devise'
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
-gem 'aws-sdk', '~> 2.2', '>= 2.2.35'
 gem 'tinymce-rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

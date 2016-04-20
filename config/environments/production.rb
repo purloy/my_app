@@ -32,11 +32,7 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
   config.assets.precompile << "tinymce-jquery.js"
-  config.paperclip_defaults = {
-  :storage => :s3,
-  :s3_host_name => 'REMOVE_THIS_LINE_IF_UNNECESSARY',
-  :bucket => 'S3_BUCKET_NAME'
-}
+  
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
